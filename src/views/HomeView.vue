@@ -41,8 +41,8 @@ export default {
     async defaultDatt(){
       const url = 'https://api.tvmaze.com/people'
       const res = await fetch(url)
-      this.resulty = res.json()
-    },  
+      this.resulty = await res.json()
+    },
     async search() {
       const url = 'https://api.tvmaze.com/search/people?q='
       const response = await fetch(`${url}${this.searchValue}`, {
@@ -60,6 +60,17 @@ export default {
       this.search()
     }
   },
+  mounted() {
+    this.defaultDatt()
+  },
+  watch: {
+    searchValue() {
+      console.log('fsdfsd');
+      if(!this.searchValue.length) {
+        this.defaultDatt()
+      }
+    } 
+  }
 }
 </script>
 

@@ -1,4 +1,5 @@
 <template>
+  <div>
     <nav>
     <div class="nav-inner">
         <h1>{{ main }}.PAGE</h1>
@@ -10,7 +11,11 @@
         <router-link to="/input">SIGN IN</router-link>
       </div>
     </div>
-  </nav>
+    </nav>
+    <div>
+      <h2>MAIN PAGE</h2>
+    </div>
+  </div>
 </template>
 <script>
 export default {
