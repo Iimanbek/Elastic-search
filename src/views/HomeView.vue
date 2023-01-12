@@ -12,7 +12,7 @@
     </div>
   </nav>
   <div v-if="resulty.length">
-    <div v-if="resulty.length" class="item-wrapper" >
+    <div v-if="resulty.length" class="item-wrapper">
     <div v-for="item in resulty">
       <card :dataB="item"/>
     </div>

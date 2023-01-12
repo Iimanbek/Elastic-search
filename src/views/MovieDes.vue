@@ -35,13 +35,13 @@ export default {
             this.show = await data
             console.log(data);
         },
-        async getSeason(){
-            const URL = 'https://api.tvmaze.com/shows/1/seasons'
-            const res = await fetch(`${URL}${this.$route.params.id}`)
-            const data = await res.json()
-            this.show = await data
-            console.log(data);
-        }
+        // async getSeason(){
+        //     const URL = 'https://api.tvmaze.com/shows/1/seasons'
+        //     const res = await fetch(`${URL}${this.$route.params.id}`)
+        //     const data = await res.json()
+        //     this.show = await data
+        //     console.log(data);
+        // }
     },
     mounted() {
         this.getShow()
