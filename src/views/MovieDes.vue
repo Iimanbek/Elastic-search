@@ -16,6 +16,9 @@
             <div class="item-image">
                 <img :src="show?.image?.original || 'https://thumbs.dreamstime.com/b/portrait-young-beautiful-girl-fashion-photo-29870052.jpg' " alt="">
             </div>
+            <div>
+                <h2>{{ show.name }}</h2>
+            </div>
         </div>
     </div>
 </template>
