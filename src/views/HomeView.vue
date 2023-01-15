@@ -1,28 +1,18 @@
 <template>
-  <nav>
-    <div class="nav-inner">
-      <router-link to="/"><h1>PEOPLPE</h1></router-link>
-      <div class="links-nav">
-        <input type="text" @input="search" placeholder="search" v-model="searchValue">
-        <router-link to="/about">MOVIES</router-link>
-        <router-link to="/home">PEOPLE</router-link>
-        <router-link to="/input">SIGN UP</router-link>
-        <router-link to="/input">SIGN IN</router-link>
+  <Layout>
+    <div v-if="resulty.length">
+      <div v-if="resulty.length" class="item-wrapper">
+      <div v-for="item in resulty">
+        <card :dataB="item"/>
+      </div>
+      </div>
+      <div v-else>
+        <div>
+          <p>not found</p>
+        </div>
       </div>
     </div>
-  </nav>
-  <div v-if="resulty.length">
-    <div v-if="resulty.length" class="item-wrapper">
-    <div v-for="item in resulty">
-      <card :dataB="item"/>
-    </div>
-    </div>
-    <div v-else>
-      <div>
-        <p>not found</p>
-      </div>
-    </div>
-  </div>
+  </Layout>
   <!-- <card :dataB="resulty"/> -->
 </template>
 
@@ -41,7 +31,8 @@ export default {
     async defaultDatt(){
       const url = 'https://api.tvmaze.com/people'
       const res = await fetch(url)
-      this.resulty = await res.json()
+      const data = await res.json()
+      this.resulty = data.filter(item => item.id <= 50)
     },
     async search() {
       const url = 'https://api.tvmaze.com/search/people?q='

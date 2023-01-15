@@ -11,7 +11,7 @@ export default {
   computed:{
     detailUrl(){
       const type = this.$route.name
-      if (type === 'about') {
+      if (type === 'shows') {
         return 'shows'
       }else{
         return 'person'

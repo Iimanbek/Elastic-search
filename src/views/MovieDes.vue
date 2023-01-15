@@ -17,15 +17,23 @@
                 <img :src="show?.image?.original || 'https://thumbs.dreamstime.com/b/portrait-young-beautiful-girl-fashion-photo-29870052.jpg' " alt="">
             </div>
         </div>
+        <div v-for="item in cast">
+            <v-cast :cast="item"/>
+        </div>
     </div>
 </template>
 <script>
+import castShow from '../components/castShow.vue'
 export default {
     data() {
         return {
             show:null,
             season:null,
+            cast:null
         }
+    },
+    components:{
+        'v-cast': castShow
     },
     methods:{
         async getShow(){
@@ -33,6 +41,13 @@ export default {
             const res = await fetch(`${URL}${this.$route.params.id}`)
             const data = await res.json()
             this.show = await data
+            console.log(data);
+        },
+        async getCasts(){
+            const URL = `https://api.tvmaze.com/shows/${this.$route.params.id}/cast`
+            const res = await fetch(`${URL}`)
+            const data = await res.json()
+            this.cast = await data
             console.log(data);
         },
         // async getSeason(){
@@ -45,6 +60,7 @@ export default {
     },
     mounted() {
         this.getShow()
+        this.getCasts()
     },
 
 }
