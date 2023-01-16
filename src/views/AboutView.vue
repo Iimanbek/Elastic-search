@@ -39,13 +39,10 @@ export default {
     async defaultData(){
       const url = "https://api.tvmaze.com/shows"
       const res = await fetch(url)
-<<<<<<< HEAD
-      const data =  await res.json()
-      this.result = data.filter(item => item.id <= 51 )
-=======
+
       const data = await res.json()
       this.result = data.filter(item => item.id <= 51)
->>>>>>> dev
+
     },
     async getData() {
       const url = 'https://api.tvmaze.com/search/shows?q='

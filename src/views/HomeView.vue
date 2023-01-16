@@ -35,11 +35,7 @@ export default {
       const url = 'https://api.tvmaze.com/people'
       const res = await fetch(url)
       const data = await res.json()
-<<<<<<< HEAD
       this.resulty = await data.filter(item => item.id <= 50 )
-=======
-      this.resulty = data.filter(item => item.id <= 50)
->>>>>>> dev
     },
     async search() {
       const url = 'https://api.tvmaze.com/search/people?q='
