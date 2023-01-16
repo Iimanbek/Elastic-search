@@ -1,42 +1,36 @@
 <template>
-  <div class="about">
-    <nav>
-    <div class="nav-inner">
-      <router-link to="/"><h1>MOVIES</h1></router-link>
-      <div class="links-nav">
-        <input type="text" @input="searchInputValue" placeholder="search" v-model="searchValueAbout">
-        <router-link to="/about">MOVIES</router-link>
-        <router-link to="/home">PEOPLE</router-link>
-        <router-link to="/input">SIGN UP</router-link>
-        <router-link to="/input">SIGN IN</router-link>
+  <Layout>
+    <div class="about">
+      <div>
+        <input type="text" @input="searchInputValue" placeholder="search..." v-model="searchValueAbout">
       </div>
-    </div>
-  </nav>
-    <div v-if="result.length">
-      <div v-if="result.length" class="item-wrapper">
-        <div v-for="item in result">
-          <card :dataB="item"/>
+      <div v-if="result.length">
+        <div v-if="result.length" class="item-wrapper">
+          <div v-for="item in result">
+            <card :dataB="item"/>
+          </div>
         </div>
-      </div>
-      <div v-else>
-        <div>
-          <p>not found</p>
+        <div v-else>
+          <div>
+            <p>not found</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Layout>
 </template>
 
 
 <script>
-  // import Card from '../components/card.vue'
-  import Card from '../components/card.vue'
+// import { mapStores } from 'pinia'
+// import { useGetInput } from '../stores/getdata'
+import Card from '../components/card.vue'
 export default {
   components:{
     Card
   },
   data: () => ({
-    searchValueAbout: '',
+    searchValueAbout: '' ,
     result: '',
     controller: new AbortController(),
 
@@ -45,8 +39,13 @@ export default {
     async defaultData(){
       const url = "https://api.tvmaze.com/shows"
       const res = await fetch(url)
+<<<<<<< HEAD
       const data =  await res.json()
       this.result = data.filter(item => item.id <= 51 )
+=======
+      const data = await res.json()
+      this.result = data.filter(item => item.id <= 51)
+>>>>>>> dev
     },
     async getData() {
       const url = 'https://api.tvmaze.com/search/shows?q='
@@ -67,10 +66,14 @@ export default {
   },
   mounted(){
     this.defaultData()
+    // console.log(this.getDataStore);
+  },
+  computed: {
+    // ...mapStores(useGetInput)
   },
   watch: {
     searchValueAbout() {
-      console.log('fsdfsd');
+      console.log(this.searchValueAbout);
       if(!this.searchValueAbout.length) {
         this.defaultData()
       }

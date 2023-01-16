@@ -1,31 +1,43 @@
 <template>
-  <div>
-    <nav>
-    <div class="nav-inner">
-        <h1>{{ main }}.PAGE</h1>
-      <div class="links-nav">
-        <!-- <input type="text" @input="searchInputValue" placeholder="search" v-model="searchValueAbout"> -->
-        <router-link to="/about">MOVIES</router-link>
-        <router-link to="/home">PEOPLE</router-link>
-        <router-link to="/input">SIGN UP</router-link>
-        <router-link to="/input">SIGN IN</router-link>
+  <Layout>
+    <div>
+      <div>
+        <v-banner/>
+      </div>
+      <div>
+        <showsSlider/>
       </div>
     </div>
-    </nav>
-    <div>
-      <h2>MAIN PAGE</h2>
-    </div>
-  </div>
+  </Layout>
 </template>
 <script>
+import ShowsSlider from '../components/ShowsSlider.vue';
+import banner from '../components/banner.vue';
 export default {
     data() {
         return {
-            main:"MAIN"
-        }
+            // main: "MAIN",
+            genres:{
+              thriller:[],
+              comedy:[],
+              horror:[],
+              romantic:[],
+              drama:[],
+              action:[],
+              crime:[],
+              fantasy:[],
+              detective:[],
+            }
+        };
+    },
+    components:{
+      ShowsSlider,
+      'v-banner': banner
+    },
+    mounted() {
+      console.log(this.genres);
     },
 }
 </script>
 <style>
-    
 </style>

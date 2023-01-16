@@ -10,27 +10,39 @@
 
 <script>
 import { mapStores } from 'pinia';
-import { useValueStore } from '../stores/GetData.js'
+// import { useValueStore } from '../stores/getdata.js'
 export default {
     data: () => ({
         value: '',
-        header: []
+        header: [
+            {
+                name:'Main',
+                link: '/'
+            },
+            {
+                name:'Movies',
+                link: '/about'
+            },
+            {
+                name:'People',
+                link: '/home'
+            },
+            {
+                name:'Main',
+                link: '/'
+            },
+        ]
     }),
     computed: {
-        ...mapStores(useValueStore)
+        // ...mapStores(useValueStore)
     },
     mounted() {
-        this.gethead()
         console.log(this.header);
     },
     methods: {
         send() {
             this.valueStore.value = this.value
         },
-        async gethead(){
-            const res = await fetch('http://localhost:3000/header')
-            this.header = await res.json()
-        }
     }
 }
 </script>
