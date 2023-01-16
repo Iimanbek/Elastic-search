@@ -10,7 +10,7 @@
 
 <script>
 import { mapStores } from 'pinia';
-import { useValueStore } from '../stores/getdata.js'
+// import { useValueStore } from '../stores/getdata.js'
 export default {
     data: () => ({
         value: '',
@@ -34,7 +34,7 @@ export default {
         ]
     }),
     computed: {
-        ...mapStores(useValueStore)
+        // ...mapStores(useValueStore)
     },
     mounted() {
         console.log(this.header);

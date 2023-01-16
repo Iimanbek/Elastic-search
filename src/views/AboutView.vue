@@ -1,6 +1,9 @@
 <template>
   <Layout>
     <div class="about">
+      <div>
+        <input type="text" @input="searchInputValue" placeholder="search..." v-model="searchValueAbout">
+      </div>
       <div v-if="result.length">
         <div v-if="result.length" class="item-wrapper">
           <div v-for="item in result">
@@ -19,15 +22,15 @@
 
 
 <script>
-import { mapStores } from 'pinia'
-import { useGetInput } from '../stores/getdata'
+// import { mapStores } from 'pinia'
+// import { useGetInput } from '../stores/getdata'
 import Card from '../components/card.vue'
 export default {
   components:{
     Card
   },
   data: () => ({
-    searchValueAbout: '',
+    searchValueAbout: '' ,
     result: '',
     controller: new AbortController(),
 
@@ -61,11 +64,11 @@ export default {
     // console.log(this.getDataStore);
   },
   computed: {
-    ...mapStores(useGetInput)
+    // ...mapStores(useGetInput)
   },
   watch: {
     searchValueAbout() {
-      console.log('fsdfsd');
+      console.log(this.searchValueAbout);
       if(!this.searchValueAbout.length) {
         this.defaultData()
       }

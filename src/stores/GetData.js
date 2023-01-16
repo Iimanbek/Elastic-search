@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 // import { ref, computed } from 'vue'
 
-export const usegetInput = defineStore('value', {
+export const useInputStore = defineStore('input', {
     state: () => ({
         movieInputs: '',
         resultMovie: '',
         personInputs: '',
         controller: new AbortController(),
+        headerHeight: 0,
     }),
     actions:{
         // async getData(state) {

@@ -26,8 +26,8 @@
     </div>
 </template>
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
+// import { Swiper, SwiperSlide } from 'swiper/vue';
+// import 'swiper/css';
 export default {
     data() {
         return {
@@ -45,8 +45,8 @@ export default {
         }
     },  
     components: {
-      Swiper,
-      SwiperSlide,
+      // Swiper, 
+      // SwiperSlide,
     },
 }
 </script>

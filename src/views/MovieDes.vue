@@ -1,17 +1,5 @@
 <template>
-    <div>
-        <nav>
-    <div class="nav-inner">
-      <router-link to="/"><h1>MOVIES</h1></router-link>
-      <div class="links-nav">
-        <!-- <input type="text" @input="searchInputValue" placeholder="search" v-model="searchValueAbout"> -->
-        <router-link to="/about">MOVIES</router-link>
-        <router-link to="/home">PEOPLE</router-link>
-        <router-link to="/input">SIGN UP</router-link>
-        <router-link to="/input">SIGN IN</router-link>
-      </div>
-    </div>
-        </nav>
+    <Layout>
         <div v-if="show">
             <div class="item-image">
                 <img :src="show?.image?.original || 'https://thumbs.dreamstime.com/b/portrait-young-beautiful-girl-fashion-photo-29870052.jpg' " alt="">
@@ -20,10 +8,11 @@
         <div v-for="item in cast">
             <v-cast :cast="item"/>
         </div>
-    </div>
+    </Layout>
 </template>
 <script>
 import castShow from '../components/castShow.vue'
+import Layout from '../layout/Layout.vue'
 export default {
     data() {
         return {
@@ -33,8 +22,9 @@ export default {
         }
     },
     components:{
-        'v-cast': castShow
-    },
+    "v-cast": castShow,
+    Layout
+},
     methods:{
         async getShow(){
             const URL = 'https://api.tvmaze.com/shows/'

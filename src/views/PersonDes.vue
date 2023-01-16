@@ -1,17 +1,5 @@
 <template>
-    <div>
-        <nav>
-    <div class="nav-inner">
-      <router-link to="/"><h1>MOVIES</h1></router-link>
-      <div class="links-nav">
-        <!-- <input type="text" @input="searchInputValue" placeholder="search" v-model="searchValueAbout"> -->
-        <router-link to="/about">MOVIES</router-link>
-        <router-link to="/home">PEOPLE</router-link>
-        <router-link to="/input">SIGN UP</router-link>
-        <router-link to="/input">SIGN IN</router-link>
-      </div>
-    </div>
-        </nav>
+    <Layout>
         <div v-if="person" class="main-wrapper">
             <div class="image-wrapper">
                 <img :src="person?.image?.original || 'https://thumbs.dreamstime.com/b/portrait-young-beautiful-girl-fashion-photo-29870052.jpg'">
@@ -20,27 +8,30 @@
                 k
             </div>
         </div>
-    </div>
+    </Layout>
 </template>
 <script>
+import Layout from '../layout/Layout.vue'
+
 export default {
     data() {
         return {
-            person:null,
-        }
+            person: null,
+        };
     },
     methods: {
-        async getShow(){
-            const URL = 'https://api.tvmaze.com/people/'
-            const res = await fetch(`${URL}${this.$route.params.id}`)
-            const data = await res.json()
-            this.person = await data
+        async getShow() {
+            const URL = "https://api.tvmaze.com/people/";
+            const res = await fetch(`${URL}${this.$route.params.id}`);
+            const data = await res.json();
+            this.person = await data;
             console.log(data);
         },
     },
     mounted() {
-        this.getShow()
+        this.getShow();
     },
+    components: { Layout }
 }
 </script>
 <style lang="css">

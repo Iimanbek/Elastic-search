@@ -1,14 +1,18 @@
 <template>
   <Layout>
-    <!-- <div>
     <div>
-      <showsSlider/>
+      <div>
+        <v-banner/>
+      </div>
+      <div>
+        <showsSlider/>
+      </div>
     </div>
-  </div> -->
   </Layout>
 </template>
 <script>
 import ShowsSlider from '../components/ShowsSlider.vue';
+import banner from '../components/banner.vue';
 export default {
     data() {
         return {
@@ -27,7 +31,8 @@ export default {
         };
     },
     components:{
-      ShowsSlider
+      ShowsSlider,
+      'v-banner': banner
     },
     mounted() {
       console.log(this.genres);

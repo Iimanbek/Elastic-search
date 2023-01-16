@@ -1,6 +1,9 @@
 <template>
   <Layout>
-    <div v-if="resulty.length">
+    <div>
+      <div>
+        <input type="text" @input="searchInput" placeholder="search..." v-model="searchValue">
+      </div>
       <div v-if="resulty.length" class="item-wrapper">
       <div v-for="item in resulty">
         <card :dataB="item"/>
