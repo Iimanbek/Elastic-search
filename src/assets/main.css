@@ -10,9 +10,10 @@ body{
   margin: 0;
 }
 a,
+
 .green {
   text-decoration: none;
-  color: #d81f26;
+  color: white;
   transition: 0.4s;
 }
 

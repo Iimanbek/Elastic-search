@@ -6,10 +6,14 @@
       </router-link>
       <div class="links-nav">
         <!-- <input type="text" @input="searchInput" placeholder="search" v-model="movieInput.movieInputs"> -->
-        <router-link to="/shows">MOVIES</router-link>
-        <router-link to="/people">PEOPLE</router-link>
-        <router-link to="/input">SIGN UP</router-link>
-        <router-link to="/input">SIGN IN</router-link>
+        <router-link :class="routePath" to="/shows">MOVIES</router-link>
+        <!-- v-if="this.$route.path === '/shows' ? this.routePath = true -->
+        <router-link :class="routePath" to="/people">PEOPLE</router-link>
+        <!-- v-if="this.$route.path === '/people' ? this.routePath = true -->
+        <router-link :class="routePath" to="/input">SIGN UP</router-link>
+        <!-- v-if="this.$route.path === '/input' ? this.routePath = true -->
+        <router-link  :class="routePath" to="/input">SIGN IN</router-link>
+        <!-- v-if="this.$route.path === '/input' ? this.routePath = true -->
       </div>
     </div>
   </div>
@@ -21,12 +25,17 @@ import { useInputStore } from '../stores/getdata.js'
 export default {
   data() {
     return {
-      // movieInput:''
+      routePath: false
     }
   },
   methods: {
     searchInput(){
       console.log(this.movieInput.movieInputs)  
+    },
+    routePath(){
+      if (this.$route.path) {
+        
+      }
     }
   },
   mounted() {

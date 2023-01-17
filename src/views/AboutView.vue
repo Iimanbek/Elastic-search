@@ -7,7 +7,7 @@
       <div v-if="result.length">
         <div v-if="result.length" class="item-wrapper">
           <div v-for="item in result">
-            <card :dataB="item"/>
+            <card @addFavourite="addFavourite" :dataB="item"/>
           </div>
         </div>
         <div v-else>
@@ -57,6 +57,18 @@ export default {
       this.controller.abort()
       this.controller = new AbortController()
       this.getData()
+    },
+    async addFavourite(show){
+      const options = {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(show)
+      }
+      const URL = 'http://localhost:3000/favourite'
+      const response = await fetch(URL, options)
+      const data = await response.json()
     }
   },
   mounted(){

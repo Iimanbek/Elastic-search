@@ -90,6 +90,10 @@ export default {
   gap: 40px;
 }
 nav{
+padding: 50px 0 ;
+padding: 50px 0 ;
+ padding: 50px 0 ;
   padding: 50px 0 ;
+     padding: 50px 0 ;
 }
 </style>

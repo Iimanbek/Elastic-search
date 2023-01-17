@@ -17,7 +17,12 @@ export default {
         return 'person'
       }
     }
-  }
+  },
+  methods: {
+    addFavourite() {
+      this.$emit('addFavourite', this.dataB)
+    }
+  },
 }
 </script>
 
@@ -29,6 +34,9 @@ export default {
       </div>
       <div>
         <p class="textItem">{{ dataB.name }}</p>
+      </div>
+      <div>
+        <v-btn @click.prevent="addFavourite" >Add to chart</v-btn>
       </div>
     </div>
   </router-link>
