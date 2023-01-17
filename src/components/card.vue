@@ -1,5 +1,12 @@
 <script>
+import { useHeaderStore } from '../stores/header'
+import { mapStores } from 'pinia'
 export default {
+  data() {
+    return {
+      inChart: false,
+    }
+  },
   props: {
     dataB: {
       type: Object,
@@ -9,6 +16,7 @@ export default {
     }
   },
   computed:{
+    ...mapStores(useHeaderStore),
     detailUrl(){
       const type = this.$route.name
       if (type === 'shows') {
@@ -16,12 +24,21 @@ export default {
       }else{
         return 'person'
       }
+    },
+    status(){
+      if (this.headerStore.favourite) {
+        return this.headerStore.favourite.find(item => item.id === this.dataB.id) || null
+      }
     }
   },
   methods: {
     addFavourite() {
-      this.$emit('addFavourite', this.dataB)
-    }
+      if (this.status) {
+        this.$emit('deleteFavourite', this.dataB)  
+      }else{
+        this.$emit('addFavourite', this.dataB)
+      }
+    },
   },
 }
 </script>
@@ -36,7 +53,11 @@ export default {
         <p class="textItem">{{ dataB.name }}</p>
       </div>
       <div>
-        <v-btn @click.prevent="addFavourite" >Add to chart</v-btn>
+        <v-btn :class="status ? 'inChartClass' : 'outOfChart','notbtn'"
+        @click.prevent="addFavourite">
+          <span v-if="!status">Add to chart</span>
+          <span v-else>Delete</span>
+        </v-btn>
       </div>
     </div>
   </router-link>
@@ -50,4 +71,11 @@ export default {
 .textItem{
     text-align: center;
 }
+.v-btn.inChartClass{
+  background: red;
+}
+.v-btn.outOfChart{
+  background: white;
+}
+
 </style>

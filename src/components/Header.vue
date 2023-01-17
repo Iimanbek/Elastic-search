@@ -10,7 +10,7 @@
         <!-- v-if="this.$route.path === '/shows' ? this.routePath = true -->
         <router-link :class="routePath" to="/people">PEOPLE</router-link>
         <!-- v-if="this.$route.path === '/people' ? this.routePath = true -->
-        <router-link :class="routePath" to="/input">SIGN UP</router-link>
+        <router-link :class="routePath" to="/list-chart">LIST</router-link>
         <!-- v-if="this.$route.path === '/input' ? this.routePath = true -->
         <router-link  :class="routePath" to="/input">SIGN IN</router-link>
         <!-- v-if="this.$route.path === '/input' ? this.routePath = true -->
@@ -21,7 +21,7 @@
 <script>
 import { mapStores } from 'pinia';
 import { useInputStore } from '../stores/getdata.js'
-
+import { useHeaderStore } from '../stores/header';
 export default {
   data() {
     return {
@@ -38,16 +38,13 @@ export default {
       }
     }
   },
-  mounted() {
-    // this.movieInput = getInput()
-    // console.log(this.movieInput.movieInputs)
-    // var header = ;
-    // var headerHeight = header.offsetHeight;
+  async  mounted() {
     this.inputStore.headerHeight = this.$refs.myHeader.clientHeight
     console.log(this.inputStore.headerHeight);
+    await this.headerStore.getFavourite()
   },
   computed: {
-      ...mapStores(useInputStore)
+      ...mapStores(useHeaderStore, useInputStore)
   },
 }
 </script>

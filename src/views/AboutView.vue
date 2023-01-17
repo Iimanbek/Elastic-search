@@ -7,7 +7,7 @@
       <div v-if="result.length">
         <div v-if="result.length" class="item-wrapper">
           <div v-for="item in result">
-            <card @addFavourite="addFavourite" :dataB="item"/>
+            <card @deleteFavourite="deleteFavourite" @addFavourite="addFavourite" :dataB="item"/>
           </div>
         </div>
         <div v-else>
@@ -22,8 +22,8 @@
 
 
 <script>
-// import { mapStores } from 'pinia'
-// import { useGetInput } from '../stores/getdata'
+import { useHeaderStore } from '../stores/header'
+import { mapStores } from 'pinia'
 import Card from '../components/card.vue'
 export default {
   components:{
@@ -68,6 +68,20 @@ export default {
       }
       const URL = 'http://localhost:3000/favourite'
       const response = await fetch(URL, options)
+      if (response.ok) {
+        this.headerStore.getFavourite()
+      }
+      const data = await response.json()
+    },
+    async deleteFavourite(show){
+      const options = {
+        method: 'DELETE'
+      }
+      const URL = `http://localhost:3000/favourite/${show.id}`
+      const response = await fetch(URL, options)
+      if (response.ok) {
+        this.headerStore.getFavourite()
+      }
       const data = await response.json()
     }
   },
@@ -76,7 +90,7 @@ export default {
     // console.log(this.getDataStore);
   },
   computed: {
-    // ...mapStores(useGetInput)
+    ...mapStores(useHeaderStore)
   },
   watch: {
     searchValueAbout() {
