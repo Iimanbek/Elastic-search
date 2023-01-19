@@ -2,7 +2,15 @@
   <Layout>
     <div class="about">
       <div>
-        <input type="text" @input="searchInputValue" placeholder="search..." v-model="searchValueAbout">
+        <!-- <input type="text" @input="searchInputValue" placeholder="search..." v-model="searchValueAbout"> -->
+        <v-spacer></v-spacer>
+        <v-text-field
+          v-model="searchValueAbout"
+          @input="searchInputValue"
+          label="Search... "
+          prepend-inner-icon="mdi-magnify"
+          hide-details="auto"
+        ></v-text-field>
       </div>
       <div v-if="result.length">
         <div v-if="result.length" class="item-wrapper">

@@ -1,8 +1,16 @@
 <template>
   <Layout>
     <div>
-      <div>
-        <input type="text" @input="searchInput" placeholder="search..." v-model="searchValue">
+      <div class="input_search">
+        <!-- <input type="text" @input="searchInput" placeholder="search..." v-model="searchValue"> -->
+        <v-spacer></v-spacer>
+        <v-text-field
+          v-model="searchValue"
+          @input="searchInput"
+          label="Search... "
+          prepend-inner-icon="mdi-magnify"
+          hide-details="auto"
+        ></v-text-field>
       </div>
       <div v-if="resulty.length" class="item-wrapper">
       <div v-for="item in resulty">
@@ -96,4 +104,5 @@ padding: 50px 0 ;
   padding: 50px 0 ;
      padding: 50px 0 ;
 }
+
 </style>

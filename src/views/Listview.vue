@@ -1,12 +1,18 @@
+
 <template>
-    <Layout>
-    LIST         
-    </Layout>
+<Layout>
+ 
+</Layout>
 </template>
 <script>
 import Layout from '../layout/Layout.vue';
 
-export default {
+  export default {
+    data() {
+        return {
+            dialog: false,
+        };
+    },
     components: { Layout }
 }
 </script>
