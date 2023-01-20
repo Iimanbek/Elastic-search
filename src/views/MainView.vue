@@ -13,6 +13,9 @@
 <script>
 import ShowsSlider from '../components/ShowsSlider.vue';
 import banner from '../components/banner.vue';
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+
 export default {
     data() {
         return {

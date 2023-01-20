@@ -2,12 +2,20 @@
   <Layout>
     <div class="about">
       <div>
-        <input type="text" @input="searchInputValue" placeholder="search..." v-model="searchValueAbout">
+        <!-- <input type="text" @input="searchInputValue" placeholder="search..." v-model="searchValueAbout"> -->
+        <v-spacer></v-spacer>
+        <v-text-field
+          v-model="searchValueAbout"
+          @input="searchInputValue"
+          label="Search... "
+          prepend-inner-icon="mdi-magnify"
+          hide-details="auto"
+        ></v-text-field>
       </div>
       <div v-if="result.length">
         <div v-if="result.length" class="item-wrapper">
           <div v-for="item in result">
-            <card :dataB="item"/>
+            <card @deleteFavourite="deleteFavourite" @addFavourite="addFavourite" :dataB="item"/>
           </div>
         </div>
         <div v-else>
@@ -22,8 +30,8 @@
 
 
 <script>
-// import { mapStores } from 'pinia'
-// import { useGetInput } from '../stores/getdata'
+import { useHeaderStore } from '../stores/header'
+import { mapStores } from 'pinia'
 import Card from '../components/card.vue'
 export default {
   components:{
@@ -59,6 +67,32 @@ export default {
       this.controller.abort()
       this.controller = new AbortController()
       this.getData()
+    },
+    async addFavourite(show){
+      const options = {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(show)
+      }
+      const URL = 'http://localhost:3000/favourite'
+      const response = await fetch(URL, options)
+      if (response.ok) {
+        this.headerStore.getFavourite()
+      }
+      const data = await response.json()
+    },
+    async deleteFavourite(show){
+      const options = {
+        method: 'DELETE'
+      }
+      const URL = `http://localhost:3000/favourite/${show.id}`
+      const response = await fetch(URL, options)
+      if (response.ok) {
+        this.headerStore.getFavourite()
+      }
+      const data = await response.json()
     }
   },
   mounted(){
@@ -66,7 +100,7 @@ export default {
     // console.log(this.getDataStore);
   },
   computed: {
-    // ...mapStores(useGetInput)
+    ...mapStores(useHeaderStore)
   },
   watch: {
     searchValueAbout() {
