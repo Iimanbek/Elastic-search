@@ -7,38 +7,52 @@
       <div class="links-nav">
         <router-link :class="routePath" to="/shows">MOVIES</router-link>
         <router-link :class="routePath" to="/people">PEOPLE</router-link>
-        <router-link @click="dialog = true" :class="routePath" to="#"> 
+        <v-btn :class="routePath"> 
           <span class="listttt">LIST</span>
           <v-icon 
           size="small"
           dark>mdi-heart</v-icon>
-        </router-link>
+        </v-btn>
         <router-link  :class="routePath" to="/input">SIGN IN</router-link>
       </div>
     </div>
     <div>
-    <div class="text-center">
-      <v-dialog
-        v-model="dialog">
-        <v-card>
-          <v-card-text>
-            <div v-if="headerStore.favourite">
-              <div v-for="item in headerStore.favourite">
-                <v-card :dataB="item" type="show" ></v-card>
-              </div>
-            </div>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="#FCA311" block @click="dialog = false">Close Dialog</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </div>
+      <v-row justify="space-around">
+        <v-col cols="auto">
+          <v-dialog
+            transition="dialog-bottom-transition"
+          >
+            <template v-slot:activator="{ props }">
+              <v-btn
+                color="primary"
+                v-bind="props"
+              >From the bottom</v-btn>
+            </template>
+            <template v-slot:default="{ isActive }">
+              <v-card>
+                <v-toolbar
+                  color="primary"
+                  title="Opening from the bottom"
+                ></v-toolbar>
+                <v-card-text>
+                  <div class="text-h2 pa-12">Hello world!</div>
+                </v-card-text>
+                <v-card-actions class="justify-end">
+                  <v-btn
+                    variant="text"
+                    @click="isActive.value = false"
+                  >Close</v-btn>
+                </v-card-actions>
+              </v-card>
+            </template>
+          </v-dialog>
+        </v-col>
+      </v-row>
     </div>
   </div>
 </template>
 <script>
-import Card from '../components/card.vue'
+// import Card from '../components/card.vue'
 import { mapStores } from 'pinia';
 import { useInputStore } from '../stores/getdata.js'
 import { useHeaderStore } from '../stores/header';
@@ -50,7 +64,7 @@ export default {
     }
   },
   components:{
-    'v-card':Card
+    // 'v-card':Card
   },
   methods: {
     searchInput(){
@@ -93,5 +107,8 @@ export default {
   top: 0;
   z-index: 10;
   width: 100%;
+}
+.v-overlay__scrim {
+  opacity: 60% !important;
 }
 </style>
