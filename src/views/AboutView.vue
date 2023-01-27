@@ -104,7 +104,6 @@ export default {
   },
   watch: {
     searchValueAbout() {
-      console.log(this.searchValueAbout);
       if(!this.searchValueAbout.length) {
         this.defaultData()
       }

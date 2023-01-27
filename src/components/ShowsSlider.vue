@@ -1,16 +1,22 @@
 <template>
     <div>
+      <div v-for="genreArray in genreStore.genres">
+        <div v-for="n in genreStore.genresAll">
+          <h2>{{ n.namee }}</h2>
+        </div>
         <swiper class="mobileSwiper" :watchSlidesProgress="true" :slidesPerView="5">
-        <swiper-slide  v-for="n in 40" >
-          <div>
-            <div>
-              <!-- <img :src="item?.image?.medium" alt=""> -->
-              1
-            </div>
-              <span>1</span>
-          </div>
+          <swiper-slide  v-for="genre in genreArray" >
+            <router-link to="">
+              <div>
+                <div>
+                  <img :src="genre?.image?.medium" alt="no images">
+                </div>
+                <span> {{ genre.name }}</span>
+              </div>
+            </router-link>
         </swiper-slide>
-      </swiper>
+        </swiper>
+      </div>
       <!-- 
       <swiper class="desstopSwiper" :watchSlidesProgress="true" :slidesPerView="2">
         <swiper-slide v-for="n in 10" >
@@ -28,6 +34,8 @@
 <script>
 // import { Swiper, SwiperSlide } from 'swiper/vue';
 // import 'swiper/css';
+import { mapStores } from 'pinia';
+import { useGenreStore } from '../stores/genres';
 export default {
     data() {
         return {
@@ -39,15 +47,16 @@ export default {
             type: Array,
             default: []
         },
-        title:{
-            type: String,
-            default: ''
-        }
+      title:{
+          type: String,
+          default: ''
+      }
     },  
     components: {
-      // Swiper, 
-      // SwiperSlide,
     },
+  computed:{
+    ...mapStores(useGenreStore)
+  }
 }
 </script>
 <style lang="css">

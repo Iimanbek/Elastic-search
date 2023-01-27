@@ -7,74 +7,33 @@
       <div class="links-nav">
         <router-link :class="routePath" to="/shows">MOVIES</router-link>
         <router-link :class="routePath" to="/people">PEOPLE</router-link>
-        <v-btn :class="routePath"> 
-          <span class="listttt">LIST</span>
-          <v-icon 
-          size="small"
-          dark>mdi-heart</v-icon>
-        </v-btn>
+        <Chart/>
         <router-link  :class="routePath" to="/input">SIGN IN</router-link>
       </div>
-    </div>
-    <div>
-      <v-row justify="space-around">
-        <v-col cols="auto">
-          <v-dialog
-            transition="dialog-bottom-transition"
-          >
-            <template v-slot:activator="{ props }">
-              <v-btn
-                color="primary"
-                v-bind="props"
-              >From the bottom</v-btn>
-            </template>
-            <template v-slot:default="{ isActive }">
-              <v-card>
-                <v-toolbar
-                  color="primary"
-                  title="Opening from the bottom"
-                ></v-toolbar>
-                <v-card-text>
-                  <div class="text-h2 pa-12">Hello world!</div>
-                </v-card-text>
-                <v-card-actions class="justify-end">
-                  <v-btn
-                    variant="text"
-                    @click="isActive.value = false"
-                  >Close</v-btn>
-                </v-card-actions>
-              </v-card>
-            </template>
-          </v-dialog>
-        </v-col>
-      </v-row>
     </div>
   </div>
 </template>
 <script>
-// import Card from '../components/card.vue'
+import Chart from './Chart.vue';
 import { mapStores } from 'pinia';
 import { useInputStore } from '../stores/getdata.js'
 import { useHeaderStore } from '../stores/header';
 export default {
   data() {
     return {
-      routePath: false,
+
       dialog: false,
     }
   },
   components:{
     // 'v-card':Card
+    Chart
   },
   methods: {
     searchInput(){
       console.log(this.movieInput.movieInputs)  
     },
-    routePath(){
-      if (this.$route.path) {
-        
-      }
-    }
+
   },
   async  mounted() {
     this.inputStore.headerHeight = this.$refs.myHeader.clientHeight
@@ -88,12 +47,9 @@ export default {
 </script>
 <style lang="css">
 .nav-inner {
-  display: flex;
-  align-items: center;
-  flex-flow: row nowrap;
-  justify-content: center;
-  height: auto;
-  padding-top: 0.5rem;
+  display: flex !important;
+  justify-content: space-around !important;
+  padding: 10px 0;
 }
 .nav-wrapper{
   background: #000;
@@ -101,14 +57,21 @@ export default {
 .listttt{
   margin-right: 3px;
 }
+
 .nav-wrapper{
-  /* position: fixed; */
-  left: 0;
-  top: 0;
   z-index: 10;
   width: 100%;
 }
 .v-overlay__scrim {
   opacity: 60% !important;
 }
+.routePath{
+  color: white ;
+}
+.links-nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 </style>

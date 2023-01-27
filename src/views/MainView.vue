@@ -13,6 +13,8 @@
 <script>
 import ShowsSlider from '../components/ShowsSlider.vue';
 import banner from '../components/banner.vue';
+import { mapStores } from 'pinia';
+import { useGenreStore } from '../stores/genres'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 
@@ -20,17 +22,6 @@ export default {
     data() {
         return {
             // main: "MAIN",
-            genres:{
-              thriller:[],
-              comedy:[],
-              horror:[],
-              romantic:[],
-              drama:[],
-              action:[],
-              crime:[],
-              fantasy:[],
-              detective:[],
-            }
         };
     },
     components:{
@@ -38,8 +29,12 @@ export default {
       'v-banner': banner
     },
     mounted() {
-      console.log(this.genres);
+      this.genreStore.getGenres()
+      console.log(this.genreStore.genres);
     },
+    computed:{
+      ...mapStores(useGenreStore)
+    }
 }
 </script>
 <style>
