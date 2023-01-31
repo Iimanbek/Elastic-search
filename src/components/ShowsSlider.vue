@@ -1,12 +1,16 @@
 <template>
-    <div>
-      <div v-for="genreArray in genreStore.genres">
-        <div v-for="n in genreStore.genresAll">
-          <h2>{{ n.namee }}</h2>
+    <div class="cont">
+      <div class="highlights">
+        <h1>Фильмы</h1>
+        <p>Фильмы — страшные, смешные, драматические, романические — заставляют нас переживать целый спектр эмоций. Множество фильмов — множество впечатлений!</p>
+      </div>
+      <div v-for="genreArray, index in genreStore.genres">
+        <div class="nameOfGenres">
+          <h2>{{ index }}</h2>
         </div>
         <swiper class="mobileSwiper" :watchSlidesProgress="true" :slidesPerView="5">
           <swiper-slide  v-for="genre in genreArray" >
-            <router-link to="">
+            <router-link :to="`/shows/${genre.id}`">
               <div>
                 <div>
                   <img :src="genre?.image?.medium" alt="no images">
@@ -68,5 +72,28 @@ export default {
   .desstopSwiper{
     display: hidden;
   }
-    
+
+.highlights{
+  width: 45%;
+  color: white;
+  margin: 50px 0 30px 0 ;
+}
+.highlights h1{
+  font-weight: bold;
+  font-size: 54px;
+}
+.highlights p{
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 430;
+}
+.nameOfGenres h2{
+  margin: 40px 0 10px  0 ;
+  color: white;
+  font-weight: bold;
+  font-size: 34px;
+}
+.cont{
+  margin: 0 3% ;
+}
 </style>
