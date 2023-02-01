@@ -47,7 +47,7 @@ export default {
   <router-link :to="`/${detailUrl}/${dataB.id}`">
     <div class="item__wrapper">
       <div class="bg">
-        <img class="image" :src="dataB?.image?.medium || dataB?.image?.original ">
+        <img class="image" :src="dataB?.image?.medium || dataB?.image?.original || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' ">
         <div class="overlay">
         <h2 class="h2ofexmaple">See more !</h2>
         </div>
