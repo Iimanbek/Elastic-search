@@ -4,12 +4,12 @@
         <h1>Фильмы</h1>
         <p>Фильмы — страшные, смешные, драматические, романические — заставляют нас переживать целый спектр эмоций. Множество фильмов — множество впечатлений!</p>
       </div>
-      <div v-for="genreArray, index in genreStore.genres">
+      <div class="wrapperSlider" v-for="genreArray, index in genreStore.genres">
         <div class="nameOfGenres">
           <h2>{{ index }}</h2>
         </div>
         <swiper class="mobileSwiper" :watchSlidesProgress="true" :slidesPerView="5">
-          <swiper-slide  v-for="genre in genreArray" >
+          <swiper-slide class="swipeMe"  v-for="genre in genreArray" >
             <router-link :to="`/shows/${genre.id}`">
               <div>
                 <div>
@@ -96,4 +96,19 @@ export default {
 .cont{
   margin: 0 3% ;
 }
+.swiper-slide {
+  transition: 250ms all;
+}
+.swiper-slide:hover {
+      transform: scale(1.2);
+      z-index: 1;
+}
+.swiper-slide:first-child:hover{
+      margin:0 40px;
+}
+.swiper-slide:last-child:hover{
+      margin:0 -40px;
+}
+/* .wrapperSlider{
+} */
 </style>

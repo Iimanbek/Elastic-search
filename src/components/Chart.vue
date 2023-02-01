@@ -29,7 +29,7 @@
                                 <div v-for="item in headerStore.favourite">
                                     <router-link :to="`/${shows}/${item.id}`">
                                         <img :src="item?.image?.medium">
-                                        <h2>{{ item.name }}</h2>
+                                        <h2 class="nameofmovei">{{ item.name }}</h2>
                                         <div class="ex">
                                             <v-btn @click.prevent="deleteFavourite(item)" class="inChartClass" 
                                             variant="plain">
@@ -118,5 +118,8 @@ export default {
 }
 .btnOfList{
     height: 24px !important;
+}
+.nameofmovei{
+  color: black ;
 }
 </style>
