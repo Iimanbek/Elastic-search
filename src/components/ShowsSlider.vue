@@ -8,7 +8,16 @@
         <div class="nameOfGenres">
           <h2>{{ index }}</h2>
         </div>
-        <swiper class="mobileSwiper" :watchSlidesProgress="true" :slidesPerView="5">
+        <swiper 
+        class="mobileSwiper"
+        :watchSlidesProgress="true" 
+        :slidesPerView="5"
+        :spaceBetween="10"
+        :pagination="{
+          clickable: true,
+        }"
+        :modules="modules"
+        >
           <swiper-slide class="swipeMe"  v-for="genre in genreArray" >
             <router-link :to="`/shows/${genre.id}`">
               <div>

@@ -20,7 +20,7 @@
             <template v-slot:default="{ isActive }">
               <v-card>
                 <v-toolbar
-                  color="primary"
+                  color="blue"
                   title="Opening from the bottom"
                 ></v-toolbar>
                 <v-card-text>
