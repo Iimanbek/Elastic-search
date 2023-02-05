@@ -11,8 +11,11 @@
         <swiper 
         class="mobileSwiper"
         :watchSlidesProgress="true" 
-        :slidesPerView="5"
-        :spaceBetween="10"
+        :autoplay="true"
+        :scrollbar="{ hide: false }"
+        :slidesPerView="6"
+        :space-between="70"
+        :center-insufficient-slides="true"
         :pagination="{
           clickable: true,
         }"
@@ -49,10 +52,11 @@
 // import 'swiper/css';
 import { mapStores } from 'pinia';
 import { useGenreStore } from '../stores/genres';
+import { Scrollbar, Autoplay } from "swiper";
 export default {
     data() {
         return {
-            
+          modules: [Scrollbar, Autoplay],
         }
     },
     props:{

@@ -31,7 +31,8 @@
                                         <img :src="item?.image?.medium">
                                         <h2 class="nameofmovei">{{ item.name }}</h2>
                                         <div class="ex">
-                                            <v-btn @click.prevent="deleteFavourite(item)" class="inChartClass" 
+                                            <v-btn @click.prevent="deleteFavourite(item)"
+                                            class="inChartClass" 
                                             variant="plain">
                                             <span>Delete</span>
                                             <v-icon class="icon___vtfy" dark>mdi-delete</v-icon>
@@ -44,7 +45,9 @@
                 </v-card-text>
                 <v-card-actions class="justify-end">
                   <v-btn
+                    class="black--text"
                     variant="text"
+                    color="primary"
                     @click="isActive.value = false"
                   >Close</v-btn>
                 </v-card-actions>
@@ -121,5 +124,8 @@ export default {
 }
 .nameofmovei{
   color: black ;
+}
+.v-btn.black--text{
+  background: rgb(55, 97, 203);
 }
 </style>
