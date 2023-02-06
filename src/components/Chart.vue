@@ -12,7 +12,12 @@
                 variant="text"
                 v-bind="props"
                 >List of
-                <v-icon 
+                <v-badge v-if="headerStore?.favourite?.length" :content="headerStore?.favourite?.length" color="error" floating>
+                  <v-icon 
+                size="small"
+                dark>mdi-heart</v-icon>
+                </v-badge>
+                <v-icon v-else
                 size="small"
                 dark>mdi-heart</v-icon>
               </v-btn>
@@ -35,8 +40,8 @@
                                             class="inChartClass" 
                                             variant="plain">
                                             <span>Delete</span>
-                                            <v-icon class="icon___vtfy" dark>mdi-delete</v-icon>
-                                        </v-btn>
+                                              <v-icon class="icon___vtfy" dark>mdi-delete</v-icon>
+                                          </v-btn>
                                         </div>
                                     </router-link>
                                 </div>

@@ -1,15 +1,21 @@
 <template>
     <Layout>
-        <div v-if="show">
-            <div class="item-image">
-                <img :src="show?.image?.original || 'https://thumbs.dreamstime.com/b/portrait-young-beautiful-girl-fashion-photo-29870052.jpg' " alt="">
+        <div class="container">
+            <div v-if="show" class="film-wrapper">
+                <div class="item-image">
+                    <img :src="show?.image?.original || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' " alt="">
+                </div>
+                <div class="item-summary">
+                    <h2>{{ show.name }}</h2>
+                    <v-chip v-for="genre in show.genres" draggable>
+                        {{ genre }}
+                    </v-chip>
+                    <div>{{show.summary}}</div>
+                </div>
             </div>
-            <div>
-                <h2>{{ show.name }}</h2>
+            <div v-for="item in cast">
+                <v-cast :cast="item"/>
             </div>
-        </div>
-        <div v-for="item in cast">
-            <v-cast :cast="item"/>
         </div>
     </Layout>
 </template>
@@ -60,7 +66,18 @@ export default {
 </script>
 <style lang="css">
 .item-image{
-    width: 100%;
+    width: 20%;
     height: auto;
+}
+.item-image img{
+    width: 100%;
+    object-fit: cover;
+}
+.film-wrapper{
+    display: flex;
+    gap: 3%;
+}
+.item-summary{
+    width: 50%;
 }
 </style>

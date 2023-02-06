@@ -30,6 +30,8 @@ data: () => ({
 computed:{
     ...mapStores(useInputStore)
 },
+methods:{
+},
 mounted() {
   console.log(this.inputStore.headerHeight);  
 },
