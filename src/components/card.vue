@@ -45,7 +45,7 @@ export default {
 
 <template>
   <router-link :to="`/${detailUrl}/${dataB.id}`">
-    <div class="item__wrapper">
+    <!-- <div class="item__wrapper">
       <div class="bg">
         <img class="image" :src="dataB?.image?.medium || dataB?.image?.original || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' ">
         <div class="overlay">
@@ -66,46 +66,17 @@ export default {
         <v-icon  v-if="status" class="icon___vtfy" dark>mdi-delete</v-icon>
         </v-btn>
       </div>
+    </div> -->
+    <div class="card">
+      <img class="image" :src="dataB?.image?.medium || dataB?.image?.original || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' ">
+      <div class="intro">
+        <h2 class="movieName">{{ dataB.name }}</h2>
+        <p class="movieDes">rating : {{ dataB.rating.average }} <v-icon dark>mdi-star</v-icon> </p>
+        <div class="chip_wrapper">
+        <v-chip class="movieRating" v-for="genre in dataB.genres" draggable>{{ genre }}</v-chip>
+        </div>
+      </div>
     </div>
-    <!-- <div>
-    <v-hover v-slot="{ isHovering, props }">
-      <v-card
-        class="mx-auto"
-        color="grey-lighten-4"
-        max-width="400"
-        v-bind="props"
-      >
-        <v-img
-          :aspect-ratio="16/9"
-          cover
-          :src="dataB?.image?.medium "
-        >
-          <v-expand-transition>
-            <div
-              v-if="isHovering"
-              class="d-flex transition-fast-in-fast-out bg-orange-darken-2 v-card--reveal text-h2"
-              style="height: 100%;"
-            >
-              More info
-            </div>
-          </v-expand-transition>
-        </v-img>
-        <v-card-text class="pt-6">
-          <div  class="font-weight-light text-grey text-h6 mb-2">
-            genres: {{ dataB.genres }}
-          </div>
-          <h3 class="text-h4 font-weight-light text-orange mb-2">
-            {{ dataB.name }}
-          </h3>
-          <div class="font-weight-light text-h6 mb-2">
-            Our Vintage kitchen utensils delight any chef.<br>
-            Made of bamboo by hand
-          </div>
-        </v-card-text>
-      </v-card>
-    </v-hover>
-  </div> -->
-
   </router-link>
 </template>
 
@@ -137,10 +108,10 @@ export default {
 .pofexmaple{
   font-family: 'Julius Sans One', sans-serif;
 }
-.image{
+/* .image{
     width: 200px;
     padding: 20px 0;
-}
+} */
 .v-btn.inChartClass{
   background: red;
 }
@@ -156,12 +127,68 @@ export default {
 .icon___vtfy{
   margin-left: 5px ;
 }
-.v-card--reveal {
-  align-items: center;
-  bottom: 0;
-  justify-content: center;
-  opacity: .9;
-  position: absolute;
+
+
+
+.card{
+  box-shadow: 5px 5px 20px black ;
+  width: 230px;
+  box-sizing: border-box;
+}
+.image{
+  border-radius: 3px;
   width: 100%;
+  transition: 1s ;
+}
+.intro{
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  position: absolute;
+  background: rgb(27,27,27,.5);
+  color: white ;
+  bottom: 5px;
+  transition: .5s;
+}
+.movieName {
+  margin: 10px;
+  /* font-size: 40px ; */
+}
+.movieDes{
+  font-size: 14px;
+  margin: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: .5s;
+}
+.chip_wrapper{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  gap: 5px;
+}
+.movieRating{
+  /* margin: 5px; */
+  visibility: hidden;
+  opacity: 0;
+  transition: .5s;
+}
+.card:hover .movieRating{
+  opacity: 1;
+  visibility: visible;
+}
+.card:hover .intro{
+  height: 220px;
+  width: 100%;
+  bottom: 5px;
+  background: #000;
+}
+.card:hover .movieDes{
+  opacity: 1;
+  visibility: visible;
+}
+.card:hover .image{
+  transform: scale(1.1);
 }
 </style>
