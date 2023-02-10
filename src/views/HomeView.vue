@@ -12,10 +12,10 @@
           hide-details="auto"
         ></v-text-field>
       </div>
-      <div v-if="resulty.length" class="item-wrapper">
-      <div v-for="item in resulty">
-        <card :dataB="item"/>
-      </div>
+      <div v-if="resulty.length" class="test">
+        <div class="item-wrapper" v-for="item in resulty">
+          <card :dataB="item"/>
+        </div>
       </div>
       <div v-else>
         <div>
@@ -80,10 +80,10 @@ export default {
 .item-wrapper{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  gap: 50px ;
-
+  margin:  4% 4% 4%;
+  row-gap: 50px;
 }
 .nav-inner{
   display: flex;
@@ -104,5 +104,4 @@ padding: 50px 0 ;
   padding: 50px 0 ;
      padding: 50px 0 ;
 }
-
 </style>

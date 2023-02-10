@@ -68,6 +68,17 @@ export default {
       </div>
     </div> -->
     <div class="card">
+      <div>
+        <div class="btnOfChart">
+          <v-btn
+          @click.prevent="addFavourite"
+          variant="plain" class="button_of_like">
+          <v-icon size="25" color="white" v-if="!status" class="icon___vtfy" dark>mdi-heart</v-icon>
+          <v-icon size="25" color="red" v-if="status" class="icon___vtfy" dark>mdi-heart</v-icon>
+          <!-- <v-icon  v-if="status" class="icon___vtfy" dark>mdi-delete</v-icon> -->
+          </v-btn>
+        </div>
+      </div>
       <img class="image" :src="dataB?.image?.medium || dataB?.image?.original || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' ">
       <div class="intro">
         <h2 class="movieName">{{ dataB.name }}</h2>
@@ -81,7 +92,7 @@ export default {
 </template>
 
 <style>
- .bg:hover .overlay {
+ /* .bg:hover .overlay {
 	 opacity: 1;
 }
  .bg:hover .image {
@@ -108,10 +119,6 @@ export default {
 .pofexmaple{
   font-family: 'Julius Sans One', sans-serif;
 }
-/* .image{
-    width: 200px;
-    padding: 20px 0;
-} */
 .v-btn.inChartClass{
   background: red;
 }
@@ -126,7 +133,7 @@ export default {
 }
 .icon___vtfy{
   margin-left: 5px ;
-}
+} */
 
 
 
@@ -146,7 +153,7 @@ export default {
   box-sizing: border-box;
   position: absolute;
   background: rgb(27,27,27,.5);
-  color: white ;
+  color: white;
   bottom: 5px;
   transition: .5s;
 }
@@ -174,6 +181,7 @@ export default {
   opacity: 0;
   transition: .5s;
 }
+
 .card:hover .movieRating{
   opacity: 1;
   visibility: visible;
@@ -190,5 +198,21 @@ export default {
 }
 .card:hover .image{
   transform: scale(1.1);
+}
+.btnOfChart{
+  position: relative;
+  width: 100%;
+}
+.v-btn.button_of_like{
+  position: absolute;
+  z-index: 2;
+  right: 0px;
+  top: 5px;
+}
+.card:hover .v-btn.button_of_like .v-icon{
+  transform: scale(1.3) rotate(-360deg);
+}
+.v-btn.button_of_like .v-icon{
+  transition: 1s;
 }
 </style>
