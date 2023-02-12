@@ -25,8 +25,8 @@
             <template v-slot:default="{ isActive }">
               <v-card>
                 <v-toolbar
-                  color="blue"
-                  title="Opening from the bottom"
+                  class="toolbar_title"
+                  title="List of favourites"
                 ></v-toolbar>
                 <v-card-text>
                     <div class="chart_wrapper">
@@ -36,8 +36,9 @@
                                         <img :src="item?.image?.medium">
                                         <h2 class="nameofmovei">{{ item.name }}</h2>
                                         <div class="ex">
-                                            <v-btn @click.prevent="deleteFavourite(item)"
-                                            class="inChartClass" 
+                                            <v-btn 
+                                            @click.prevent="deleteFavourite(item)"
+                                            class="inChartClass"
                                             variant="plain">
                                             <span>Delete</span>
                                               <v-icon class="icon___vtfy" dark>mdi-delete</v-icon>
@@ -116,7 +117,7 @@ export default {
 }
 .v-btn.inChartClass{
   background: red;
-  color: white ;
+  /* color: white ; */
 }
 .v-col{
     padding: 0 !important;
@@ -131,6 +132,11 @@ export default {
   color: black ;
 }
 .v-btn.black--text{
-  background: rgb(55, 97, 203);
+  background: #18181890;
+}
+.v-toolbar.toolbar_title{
+  color: white;
+  font-weight: 600;
+  background: #18181890;
 }
 </style>

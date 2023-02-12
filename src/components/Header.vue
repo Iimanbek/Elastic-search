@@ -37,7 +37,7 @@ export default {
   },
   async  mounted() {
     this.inputStore.headerHeight = this.$refs.myHeader.clientHeight
-    console.log(this.inputStore.headerHeight);
+    // console.log(this.inputStore.headerHeight);
     await this.headerStore.getFavourite()
   },
   computed: {
@@ -49,7 +49,6 @@ export default {
 .nav-inner {
   display: flex !important;
   justify-content: space-around !important;
-  padding: 10px 0;
 }
 .nav-wrapper{
   background: #000;

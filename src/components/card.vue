@@ -45,28 +45,6 @@ export default {
 
 <template>
   <router-link :to="`/${detailUrl}/${dataB.id}`">
-    <!-- <div class="item__wrapper">
-      <div class="bg">
-        <img class="image" :src="dataB?.image?.medium || dataB?.image?.original || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' ">
-        <div class="overlay">
-        <h2 class="h2ofexmaple">See more !</h2>
-        </div>
-      </div>
-      <div>
-        <p class="textItem">{{ dataB.name }}</p>
-      </div>
-      <div class="btnOfChart">
-        <v-btn 
-        :class="status ? 'inChartClass' : 'outOfChart','notbtn'"
-        @click.prevent="addFavourite"
-        variant="plain">
-        <span v-if="!status">Add to </span>
-        <v-icon v-if="!status" class="icon___vtfy" dark>mdi-heart</v-icon>
-        <span  v-if="status">Delete</span>
-        <v-icon  v-if="status" class="icon___vtfy" dark>mdi-delete</v-icon>
-        </v-btn>
-      </div>
-    </div> -->
     <div class="card">
       <div>
         <div class="btnOfChart">
@@ -75,7 +53,6 @@ export default {
           variant="plain" class="button_of_like">
           <v-icon size="25" color="white" v-if="!status" class="icon___vtfy" dark>mdi-heart</v-icon>
           <v-icon size="25" color="red" v-if="status" class="icon___vtfy" dark>mdi-heart</v-icon>
-          <!-- <v-icon  v-if="status" class="icon___vtfy" dark>mdi-delete</v-icon> -->
           </v-btn>
         </div>
       </div>
@@ -92,51 +69,6 @@ export default {
 </template>
 
 <style>
- /* .bg:hover .overlay {
-	 opacity: 1;
-}
- .bg:hover .image {
-	 -webkit-filter: blur(2px);
-	 filter: blur(2px);
-}
-.overlay {
-  position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    color: #fff;
-    opacity: 0;
-}
-.h2ofexmaple{
-  padding-top: 50%;
-  font-size: 34px;
-  font-weight: 600;
-  font-family: 'Droid Serif', serif;
-  text-align: center;
-}
-.pofexmaple{
-  font-family: 'Julius Sans One', sans-serif;
-}
-.v-btn.inChartClass{
-  background: red;
-}
-.v-btn.outOfChart{
-  border: 0.5px solid red;
-}
-.item__wrapper{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.icon___vtfy{
-  margin-left: 5px ;
-} */
-
-
-
 .card{
   box-shadow: 5px 5px 20px black ;
   width: 230px;
@@ -159,6 +91,7 @@ export default {
 }
 .movieName {
   margin: 10px;
+  font-weight: 600;
   /* font-size: 40px ; */
 }
 .movieDes{

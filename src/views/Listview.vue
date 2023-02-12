@@ -1,17 +1,25 @@
 <template>
 <Layout> 
+    <div>
+        <div v-for="item in this.data">
+            <!-- <p>{{ item.resolutions.original.url }}</p> -->
+        </div>
+    </div>
 </Layout>
 </template>
 <script>
-import Layout from '../layout/Layout.vue';
-
   export default {
     data() {
         return {
-            dialog: false,
+            data: null
         };
     },
-    components: { Layout }
+    methods: {
+        async getTest(){
+        }
+    },
+    mounted(){
+    }
 }
 </script>
 <style>
