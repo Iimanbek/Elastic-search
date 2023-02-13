@@ -13,11 +13,19 @@
                 </div>
                 <div class="item-summary">
                     <h2>{{ show.name }}</h2>
+                    <div class="row_content">
+                        <span>{{ show.premiered }}</span>
+                        <span> | {{ show.language }}</span>
+                        <span> | runtime -  {{ show.runtime }}</span>
+                    </div>
                     <div class="chips_wrap">
                         <span> Genres: </span>
                         <v-chip v-for="genre in show.genres" draggable>
                             {{ genre }}
                         </v-chip>
+                    </div>
+                    <div class="rating_wrap">
+                        <span>{{ show.rating.average }}</span><v-icon dark> mdi-star</v-icon>
                     </div>
                     <div class="summary" v-html="show.summary">
                     </div>
@@ -83,7 +91,7 @@ export default {
 </script>
 <style lang="css">
 .item-image{
-    width: 20%;
+    width: 30%;
     height: auto;
 }
 .item-image img{
@@ -91,7 +99,7 @@ export default {
     object-fit: cover;
 }
 .film-wrapper{
-    width: 70%;
+    width: 80%;
     margin-left: 10%;
     height: 100vh;
     display: flex;
@@ -102,6 +110,13 @@ export default {
 .item-summary{
     width: 50%;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.item-summary h2{
+    font-weight: 600;
+    font-size: 48px ;
 }
 .background__wrapper{
     position: relative;
@@ -109,6 +124,7 @@ export default {
 .background__wrapper img {
     position: absolute;
     height: 100%;
+    object-fit: cover;
     right: 0;
     background: linear-gradient(0deg,#181818 0,hsla(0,0%,9%,.987) 1.62%,hsla(0,0%,9%,.951) 3.1%,hsla(0,0%,9%,.896) 4.5%,hsla(0,0%,9%,.825) 5.8%,hsla(0,0%,9%,.741) 7.06%,hsla(0,0%,9%,.648) 8.24%,hsla(0,0%,9%,.55) 9.42%,hsla(0,0%,9%,.45) 10.58%,hsla(0,0%,9%,.352) 11.76%,hsla(0,0%,9%,.259) 12.94%,hsla(0,0%,9%,.175) 14.2%,hsla(0,0%,9%,.104) 15.5%,hsla(0,0%,9%,.049) 16.9%,hsla(0,0%,9%,.013) 18.38%,hsla(0,0%,9%,0) 20%);;
 
@@ -117,6 +133,17 @@ export default {
     width: 70%;
 }
 .chips_wrap{
-    margin: 20px 0 ;
+    margin: 10px 0;
+}
+.summary p{
+    color: white;
+    font-weight: 350;
+    font-size: 16px;
+}
+.rating_wrap{
+    margin: 0 0 10px 0 ;
+}
+.row_content{
+    color: #181818;;
 }
 </style>

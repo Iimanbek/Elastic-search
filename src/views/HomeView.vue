@@ -12,8 +12,8 @@
           hide-details="auto"
         ></v-text-field>
       </div>
-      <div v-if="resulty.length" class="test">
-        <div class="item-wrapper" v-for="item in resulty">
+      <div v-if="resulty.length" class="item-wrapper">
+        <div class="test" v-for="item in resulty">
           <card :dataB="item"/>
         </div>
       </div>

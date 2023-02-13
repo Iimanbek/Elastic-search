@@ -59,9 +59,16 @@ export default {
       <img class="image" :src="dataB?.image?.medium || dataB?.image?.original || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' ">
       <div class="intro">
         <h2 class="movieName">{{ dataB.name }}</h2>
-        <p class="movieDes">rating : {{ dataB.rating.average }} <v-icon dark>mdi-star</v-icon> </p>
-        <div class="chip_wrapper">
+        <p v-if="dataB?.rating?.average" class="movieDes">rating : {{ dataB?.rating?.average }} <v-icon dark>mdi-star</v-icon> </p>
+        <div v-if="dataB?.rating" class="chip_wrapper">
         <v-chip class="movieRating" v-for="genre in dataB.genres" draggable>{{ genre }}</v-chip>
+        </div>
+        <div v-else>
+          <div>
+            <p class="movieDes">Birthday: {{ dataB?.birthday }}</p>
+            <p class="movieDes">Country: {{ dataB?.country?.name }}</p>
+            <p class="movieDes">Gender: {{ dataB?.gender }}</p>
+          </div>
         </div>
       </div>
     </div>
