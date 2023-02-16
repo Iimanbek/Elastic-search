@@ -24,8 +24,8 @@
                             {{ genre }}
                         </v-chip>
                     </div>
-                    <div class="rating_wrap">
-                        <span>{{ show.rating.average }}</span><v-icon dark> mdi-star</v-icon>
+                    <div v-if="show?.rating?.average" class="rating_wrap">
+                        <v-icon dark> mdi-star</v-icon><span>{{ show?.rating?.average }}</span>
                     </div>
                     <div class="summary" v-html="show.summary">
                     </div>
@@ -142,8 +142,10 @@ export default {
 }
 .rating_wrap{
     margin: 0 0 10px 0 ;
+    display: flex;
+    align-items: center;
 }
 .row_content{
-    color: #181818;;
+    color: rgb(175, 173, 173);
 }
 </style>
