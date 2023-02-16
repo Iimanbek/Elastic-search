@@ -11,6 +11,14 @@
           prepend-inner-icon="mdi-magnify"
           hide-details="auto"
         ></v-text-field>
+        <v-select
+            v-model="value"
+            :items="items"
+            @click:append="testing"
+            chips
+            label="Chips"
+            multiple
+        ></v-select>
       </div>
       <div v-if="result.length">
         <div v-if="result.length" class="item-wrapper">
@@ -41,7 +49,22 @@ export default {
     searchValueAbout: '' ,
     result: '',
     controller: new AbortController(),
-
+    options: [
+        { text: 'all', value: 'all' },
+        { text: 'Romance', value: 'Romance' },
+        { text: 'Drama', value: 'Drama' },
+        { text: 'Science', value: 'Science' },
+        { text: 'Thriller', value: 'Thriller' },
+        { text: 'Action', value: 'Action' },
+        { text: 'Crime', value: 'Crime' },
+        { text: 'Horror', value: 'Horror' },
+        { text: 'Mystery', value: 'Mystery' },
+        { text: 'History', value: 'History' },
+        { text: 'War', value: 'War' },
+        { text: 'Adventure', value: 'Adventure' }
+    ],
+    items: ['all','Romance','Drama','Science','Thriller','Action','Crime','Horror','Mystery','History','War','Adventure'],
+    value: [],
   }),
   methods: {
     async defaultData(){
@@ -93,6 +116,9 @@ export default {
         this.headerStore.getFavourite()
       }
       const data = await response.json()
+    },
+    testing(){
+      console.log(this.value + "hello world");
     }
   },
   mounted(){
