@@ -1,9 +1,9 @@
 <template>
-    <div >
+    <div>
         <v-header>
         </v-header>
         <main>
-            <slot/>                 
+            <slot />
         </main>
         <footer>
             <v-footer></v-footer>
@@ -12,17 +12,17 @@
 </template>
 <script>
 import { mapStores } from 'pinia';
-import { useInputStore } from '../stores/getdata';
+import { useInputStore } from '@/stores/GetData';
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue';
 export default {
-    components:{
+    components: {
         'v-header': Header,
         'v-footer': Footer
     },
-    computed:{
+    computed: {
         ...mapStores(useInputStore),
-        heightValue(){
+        heightValue() {
             if (this.inputStore.headerHeight) {
                 return this.inputStore.headerHeight
             }
@@ -30,6 +30,4 @@ export default {
     }
 }
 </script>
-<style lang="css">
-    
-</style>
+<style lang="css"></style>
