@@ -2,7 +2,8 @@
     <Layout>
         <div v-if="person" class="main-wrapper">
             <div class="image-wrapper">
-                <img :src="person?.image?.original || 'https://thumbs.dreamstime.com/b/portrait-young-beautiful-girl-fashion-photo-29870052.jpg'">
+                <img
+                    :src="person?.image?.original || 'https://thumbs.dreamstime.com/b/portrait-young-beautiful-girl-fashion-photo-29870052.jpg'">
             </div>
             <div class="item-wrapper">
                 k
@@ -25,7 +26,6 @@ export default {
             const res = await fetch(`${URL}${this.$route.params.id}`);
             const data = await res.json();
             this.person = await data;
-            console.log(data);
         },
     },
     mounted() {
@@ -35,16 +35,17 @@ export default {
 }
 </script>
 <style lang="css">
-.main-wrapper{
+.main-wrapper {
     display: flex;
-    gap: 20px ;
+    gap: 20px;
 }
+
 .image-wrapper {
     width: 300px;
     box-sizing: border-box;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.image-wrapper img{
+
+.image-wrapper img {
     width: 100%;
-}
-</style>
+}</style>
